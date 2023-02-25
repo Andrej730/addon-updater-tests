@@ -6,7 +6,7 @@ bl_info = {
     "description": "Author, import, and export data using the Industry Foundation Classes schema",
     "author": "IfcOpenShell Contributors",
     "blender": (2, 80, 0),
-    "version": (0, 0, 1),
+    "version": (0, 0, 2),
     "location": "File > Export, File > Import, Scene / Object / Material / Mesh Properties",
     "tracker_url": "https://github.com/IfcOpenShell/IfcOpenShell/issues",
     "category": "Import-Export",
@@ -117,6 +117,7 @@ classes = (
 
 
 def register():
+    print('Super neat on update feature')
     addon_updater_ops.register(bl_info)
     for cls in classes:
         addon_updater_ops.make_annotations(cls)  # Avoid blender 2.8 warnings.
