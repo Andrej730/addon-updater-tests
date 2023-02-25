@@ -6,7 +6,7 @@ bl_info = {
     "description": "Author, import, and export data using the Industry Foundation Classes schema",
     "author": "IfcOpenShell Contributors",
     "blender": (2, 80, 0),
-    "version": (0, 0, 3),
+    "version": (0, 0, 35),
     "location": "File > Export, File > Import, Scene / Object / Material / Mesh Properties",
     "tracker_url": "https://github.com/IfcOpenShell/IfcOpenShell/issues",
     "category": "Import-Export",
