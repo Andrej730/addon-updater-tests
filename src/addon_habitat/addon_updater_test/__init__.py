@@ -6,7 +6,7 @@ bl_info = {
     "description": "Author, import, and export data using the Industry Foundation Classes schema",
     "author": "IfcOpenShell Contributors",
     "blender": (2, 80, 0),
-    "version": (0, 0, 1),
+    "version": (0, 0, 3),
     "location": "File > Export, File > Import, Scene / Object / Material / Mesh Properties",
     "tracker_url": "https://github.com/IfcOpenShell/IfcOpenShell/issues",
     "category": "Import-Export",
@@ -16,10 +16,9 @@ class DemoUpdaterPanel(bpy.types.Panel):
     """Panel to demo popup notice and ignoring functionality"""
     bl_label = "Updater Demo Panel"
     bl_idname = "OBJECT_PT_addon_updater_panel"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'TOOLS' if bpy.app.version < (2, 80) else 'UI'
-    bl_context = "objectmode"
-    bl_category = "Tools"
+    bl_space_type = 'PROPERTIES'
+    bl_region_type = 'WINDOW'
+    bl_context = "modifier"
 
     def draw(self, context):
         layout = self.layout
@@ -117,6 +116,7 @@ classes = (
 
 
 def register():
+    print('Super neat on update feature')
     addon_updater_ops.register(bl_info)
     for cls in classes:
         addon_updater_ops.make_annotations(cls)  # Avoid blender 2.8 warnings.
