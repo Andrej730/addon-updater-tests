@@ -1295,7 +1295,11 @@ def select_link_function(self, tag):
     """
 
     # -- Default, universal case (and is the only option for GitLab/Bitbucket)
-    link = tag["zipball_url"]
+    # link = tag["zipball_url"]
+    tag_name = tag['name']
+    import requests
+    json_data = requests.get('https://api.github.com/repos/Andrej730/addon-updater-tests/releases').json()
+    download_url = [release for release in json_data if release['tag_name'] == tag_name][0]['assets'][0]['browser_download_url']
 
     # -- Example: select the first (or only) asset instead source code --
     # if "assets" in tag and "browser_download_url" in tag["assets"][0]:
@@ -1313,7 +1317,7 @@ def select_link_function(self, tag):
     # elif platform.system() == "Linux":
     # 	link = [asset for asset in tag["assets"] if 'linux' in asset][0]
 
-    return link
+    return download_url
 
 
 # -----------------------------------------------------------------------------
@@ -1367,7 +1371,7 @@ def register(bl_info):
     # Addon subfolder path.
     # "sample/path/to/addon"
     # default is "" or None, meaning root
-    updater.subfolder_path = "src/addon_habitat/addon_updater_test"
+    updater.subfolder_path = ""
 
     # Used to check/compare versions.
     updater.current_version = bl_info["version"]
